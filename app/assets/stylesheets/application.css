@@ -1,0 +1,31 @@
+.notifications {
+  color: white;
+  text-align: center;
+}
+
+.notice {
+  background-color: #33CCFF;
+}
+
+.alert {
+  background-color: orangered;
+}
+
+.flex_test-box {
+  background-color: #eee;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content:stretch;
+  justify-content:space-around;
+}
+
+.flex_test-item {
+  padding: 10px;
+  color:  #fff;
+  margin:  10px;
+  border-radius:  5px;
+  font-size:  30px;
+  width: 75%;
+  text-align:  center;
+}
