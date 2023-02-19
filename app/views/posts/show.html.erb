@@ -1,0 +1,44 @@
+<div class="h-full w-full flex justify-center items-center">  
+  <div class="rounded overflow-hidden border w-full lg:w-6/12 md:w-6/12 bg-white mx-3 md:mx-0 lg:mx-0">
+    <div class="w-full flex justify-between p-3">
+      <div class="flex">
+        <div class="rounded-full h-8 w-8 bg-gray-500 flex items-center justify-center overflow-hidden">
+          <div class="avatar">
+            <div class="avatar avatar-md">
+                <%= link_to image_tag(@post.user.decorate.avatar), user_path(@post.user), class: 'rounded-circle avatar-sm' %>
+            </div>
+          </div>
+        </div>
+        <span class='pt-1 ml-2 font-bold text-sm'><%= link_to @post.user.user_name, user_path(@post.user) %></span>
+      </div>
+      <span class="px-2 hover:bg-gray-300 cursor-pointer rounded"><i class="fas fa-ellipsis-h pt-2 text-lg"></i></span>
+    </div>
+    <%= image_tag @post.main_image, class: "w-full bg-cover" %>
+    <div class="px-3 pb-2">
+      <div class="pt-2">
+        <i class="far fa-heart cursor-pointer"></i>
+        <span class="text text-gray-400 font-medium"><%= @post.age_group_i18n + @post.business_attribute_i18n %></span>
+        <% if logged_in? %>
+          <%= link_to 'edit', edit_post_path(@post), class: 'inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' if current_user.own?(@post) %>
+        <% end %>  
+      </div>
+      <div class="pt-1">
+        <% @post.tags.each do |tag| %>
+          <%= link_to tag.name, '#', class: 'inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
+        <% end %> 
+        <div class="mb-2 text-sm">
+          <span class="font-medium mr-2"><%= @post.title %></span>
+          <div>
+            <%= @post.description %>
+          </div>  
+        </div>
+      </div>
+      <div class="text-sm mb-2 text-gray-400 cursor-pointer font-medium">View all 14 comments</div>
+      <div class="mb-2">
+        <div class="mb-2 text-sm">
+          <span class="font-medium mr-2">razzle_dazzle</span> Dude! How cool! I went to New Zealand last summer and had a blast taking the tour! So much to see! Make sure you bring a good camera when you go!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

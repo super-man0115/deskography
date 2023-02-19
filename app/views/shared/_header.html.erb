@@ -2,8 +2,8 @@
   <%= link_to image_tag('logo.png'), root_path%>
 
   <nav class="hidden lg:flex gap-12">
-    <%= link_to 'NewPost', '#', class: "text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100" %>
-    <%= link_to 'PostIndex', '#', class: "text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100" %>
+    <%= link_to 'NewPost', new_post_path, class: "text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100" %>
+    <%= link_to 'PostIndex', posts_path, class: "text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100" %>
     <% if logged_in? %>
       <%= link_to 'My Page', user_path(current_user), class: "text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100" %>
     <% end%>  

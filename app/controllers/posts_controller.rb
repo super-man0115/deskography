@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     if @post.save_with_tags(tag_names: params.dig(:post, :tag_names).split(',').uniq)
       redirect_to posts_path, notice: '投稿完了！！'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     if @post.save_with_tags(tag_names: params.dig(:post, :tag_names).split(',').uniq)
       redirect_to post_path(@post), notice: 'アップデート完了！！'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
