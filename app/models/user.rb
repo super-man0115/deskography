@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :posts
   has_one_attached :avatar
 
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }
@@ -10,4 +11,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, presence: true
   validates :user_name, presence: true, length: { maximum: 15 }
+
+  def own?(object)
+    id == object.user.id
+  end  
 end

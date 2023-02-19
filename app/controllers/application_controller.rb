@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+  before_action :require_login
+
+  def current_user
+    @current_user ||= login_from_session
+  end
 
   def check_user
     return if @user == current_user
