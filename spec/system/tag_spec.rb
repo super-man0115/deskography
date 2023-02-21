@@ -56,7 +56,7 @@ RSpec.describe 'Tags', type: :system do
   describe '編集' do
     before { login_as(user) }
 
-    fit 'タグの編集ができること' do
+    it 'タグの編集ができること' do
       visit new_post_path
       fill_in 'タイトル', with: 'タグ編集'
       fill_in 'タグ', with: 'Ruby, Rails, Javascript'
