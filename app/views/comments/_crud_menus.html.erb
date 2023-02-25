@@ -1,0 +1,14 @@
+<div class="flex justify-between w-full">
+  <ul class='crud-menu-btn list-inline float-right'>
+    <li class="list-inline-item">
+      <%= link_to '#', id: "button-edit-" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
+    </li>
+    <li class="list-inline-item">
+      <%= link_to comment_path(comment), class: "js-delete-comment-button",data: { turbo_method: :delete } do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
+    </li>
+  </ul>
+</div>
