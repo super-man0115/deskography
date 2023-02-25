@@ -18,6 +18,7 @@ gem "rails-i18n"
 gem "enum_help"
 gem "draper"
 gem "config"
+gem "image_processing"
 
 
 group :development, :test do

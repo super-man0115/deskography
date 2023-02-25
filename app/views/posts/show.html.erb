@@ -16,7 +16,6 @@
     <%= image_tag @post.main_image, class: "w-full bg-cover" %>
     <div class="px-3 pb-2">
       <div class="pt-2">
-        <i class="far fa-heart cursor-pointer"></i>
         <span class="text text-gray-400 font-medium"><%= @post.age_group_i18n + @post.business_attribute_i18n %></span>
         <% if logged_in? %>
           <%= link_to 'edit', edit_post_path(@post), class: 'inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' if current_user.own?(@post) %>
@@ -33,12 +32,14 @@
           </div>  
         </div>
       </div>
-      <div class="text-sm mb-2 text-gray-400 cursor-pointer font-medium">View all 14 comments</div>
-      <div class="mb-2">
-        <div class="mb-2 text-sm">
-          <span class="font-medium mr-2">razzle_dazzle</span> Dude! How cool! I went to New Zealand last summer and had a blast taking the tour! So much to see! Make sure you bring a good camera when you go!
-        </div>
+      <div class="flex justify-center">
+        <%= render 'comments/form', { post: @post, comment: @comment } %>
       </div>
+      <br/>
+      <br/>
+      <div class="flex justify-center">
+        <%= render 'comments/comments', { comments: @comments } %>
+      </div>  
     </div>
   </div>
 </div>  

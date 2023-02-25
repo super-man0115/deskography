@@ -36,7 +36,9 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: 'ユーザーを削除したぜ'
   end
 
-  def show; end
+  def show
+    @posts = @user.posts
+  end
 
   private
 
