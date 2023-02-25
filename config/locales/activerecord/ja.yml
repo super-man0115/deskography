@@ -1,4 +1,7 @@
 ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
   errors:
     messages:
       too_many_files: は%{count}個以内で入力してください

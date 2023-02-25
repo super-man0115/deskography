@@ -3,9 +3,12 @@ class Post < ApplicationRecord
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :comments, dependent: :destroy
   has_one_attached :main_image
   has_many_attached :sub_images
-
+  
+  validates :title, length: { maximum: 10 }
+  validates :description, length: { maximum: 255 }
   validates :main_image, attached_file_presence: true
   validates :sub_images, attached_file_number: { maximum: 9 }
 
