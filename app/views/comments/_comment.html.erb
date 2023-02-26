@@ -4,7 +4,7 @@
       <div class="rounded-full h-8 w-8 bg-gray-500 flex items-center justify-center overflow-hidden">
         <div class="avatar">
           <div class="avatar avatar-md">
-            <%= link_to image_tag(@post.user.decorate.avatar), user_path(@post.user), class: 'rounded-circle avatar-sm' %>
+            <%= link_to image_tag(comment.user.decorate.avatar), user_path(comment.user), class: 'rounded-circle avatar-sm' %>
           </div>
         </div>
       </div>
@@ -16,19 +16,10 @@
     <div class="pt-5 pl-10 ml-auto self-end">
       <p class="text-gray-400 text-sm"><%= l comment.created_at, format: :short %></p>
     </div>
-    <div class="flex justify-between w-full">
-      <ul class='crud-menu-btn list-inline float-right'>
-        <li class="list-inline-item">
-          <%= link_to '#', id: "button-edit-" do %>
-            <i class="fa-solid fa-pen"></i>
-          <% end %>
-        </li>
-        <li class="list-inline-item">
-          <%= link_to comment_path(comment), class: "js-delete-comment-button",data: { turbo_method: :delete } do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-        </li>
-      </ul>
-    </div>
+    <% if current_user.own?(comment) %>
+      <%= render 'comments/crud_menus', comment: comment %>
+    <% else %>
+      <%= render 'comments/bookmark_button', comment: comment %>  
+    <% end %>
   </div>
 </div>

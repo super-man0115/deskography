@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_posts, through: :bookmarks, source: :post
   has_one_attached :main_image
   has_many_attached :sub_images
   
@@ -33,4 +35,12 @@ class Post < ApplicationRecord
   def tag_names
     tags.map(&:name).join(',')
   end
+
+  def like_count
+    bookmark_posts.count
+  end
+  
+  def comment_like_count
+    comment_bookmark_users.count
+  end  
 end

@@ -32,6 +32,11 @@
           </div>  
         </div>
       </div>
+      <% if current_user.own?(@post) %>
+        <%= render '/posts/crud_menus', post: @post %>
+      <% else %>
+        <%= render 'posts/bookmark_button', post: @post  %>
+      <% end %>
       <div class="flex justify-center">
         <%= render 'comments/form', { post: @post, comment: @comment } %>
       </div>
