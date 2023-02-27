@@ -22,7 +22,7 @@ RSpec.describe 'comments', type: :system do
 
   describe 'コメントを削除できる', js: true do
     before { comment_post }
-    fit '削除に成功する' do
+    it '削除に成功する' do
       visit post_path(post)
 
       expect(page).to have_content 'テストです'

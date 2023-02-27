@@ -1,8 +1,10 @@
 class BookmarksController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    current_user.bookmark(@post)
-  
+    @bookmark = current_user.bookmark(@post)
+    respond_to do |format|
+      format.turbo_stream
+    end    
   end
 
   def destroy
