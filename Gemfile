@@ -20,13 +20,13 @@ gem "draper"
 gem "config"
 gem "image_processing"
 gem "dotenv"
+gem "faker"
 
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'faker'
 end
 
 group :development do
