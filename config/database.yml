@@ -85,7 +85,6 @@ test:
 production:
   <<: *default
   database: deskography_production
-  username: deskography
+  username: cleoatw1x002gagp59ndw4cxo
   password: <%= ENV["DESKOGRAPHY_DATABASE_PASSWORD"] %>
-  host: localhost
-  port: 5432
+  url: <%= ENV["DATABASE_URL"]
