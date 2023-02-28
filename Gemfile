@@ -19,6 +19,7 @@ gem "enum_help"
 gem "draper"
 gem "config"
 gem "image_processing"
+gem "dotenv"
 
 
 group :development, :test do

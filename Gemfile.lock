@@ -98,6 +98,7 @@ GEM
       reline (>= 0.3.1)
     deep_merge (1.2.2)
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
     draper (4.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -383,6 +384,7 @@ DEPENDENCIES
   capybara
   config
   debug
+  dotenv
   draper
   enum_help
   factory_bot_rails
