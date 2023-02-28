@@ -87,4 +87,4 @@ production:
   database: deskography_production
   username: cleoatw1x002gagp59ndw4cxo
   password: <%= ENV["DESKOGRAPHY_DATABASE_PASSWORD"] %>
-  url: <%= ENV["DATABASE_URL"]
+  url: <%= ENV["DATABASE_URL"] %>
