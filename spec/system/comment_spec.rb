@@ -4,7 +4,7 @@ RSpec.describe 'comments', type: :system do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
   let(:post) { create(:post, user: other_user) }
-  let(:comment_post) { create(:comment, body: 'テストです', post: post, user: user) }
+  let(:comment_post) { create(:comment, body: 'テストです', post:, user:) }
 
   before { login_as(user) }
 
@@ -33,5 +33,5 @@ RSpec.describe 'comments', type: :system do
       expect(page).not_to have_content 'テストです'
       expect(page).to have_selector('turbo-stream[action="remove"]')
     end
-  end  
-end  
+  end
+end

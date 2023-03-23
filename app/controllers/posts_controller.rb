@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    
     if @post.save_with_tags(tag_names: params.dig(:post, :tag_names).split(',').uniq)
       redirect_to posts_path, notice: '投稿完了！！'
     else
@@ -42,6 +43,12 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: '投稿を削除したぜ'
   end
 
+  def search
+    if params[:keyword]
+      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], fields: 'all')
+    end
+  end
+
   private
 
   def set_post
@@ -49,6 +56,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :business_attribute, :age_group, :main_image, sub_images: [])
+    params.require(:post).permit(:title, :description, :business_attribute, :age_group, :main_image, :items1, :items2, :items3, :items4, :items, sub_images: [])
   end
 end

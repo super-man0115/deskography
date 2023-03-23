@@ -30,3 +30,19 @@
   text-align:  center;
 }
 
+.fa-times {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: rgba(128, 128, 128, 0.46);
+  cursor: pointer;
+}
+
+.search-item {
+  display: inline-block;
+  width: 200px;
+	height: 100px;
+  margin: 10px;
+  font-size: 12px;
+}
+

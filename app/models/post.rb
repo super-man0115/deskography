@@ -6,9 +6,11 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
+  has_many :post_items, dependent: :destroy
+  has_many :items, through: :post_items
   has_one_attached :main_image
   has_many_attached :sub_images
-  
+
   validates :title, length: { maximum: 10 }
   validates :description, length: { maximum: 255 }
   validates :main_image, attached_file_presence: true
@@ -39,8 +41,9 @@ class Post < ApplicationRecord
   def like_count
     bookmark_posts.count
   end
-  
+
   def comment_like_count
     comment_bookmark_users.count
-  end  
+  end
+
 end

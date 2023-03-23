@@ -4,7 +4,7 @@ class BookmarksController < ApplicationController
     @bookmark = current_user.bookmark(@post)
     respond_to do |format|
       format.turbo_stream
-    end    
+    end
   end
 
   def destroy

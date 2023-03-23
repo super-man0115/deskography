@@ -1,41 +1,48 @@
-<%= form_with model: post, class: "contents", local: true do |f| %>
+<%= form_with model: post, class: "contents", local: true, id: "post_form" do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-  <div class="my-5">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5" data-controller="modal">
+    <%= link_to image_tag('new_posts.svg'), search_path, data: { action: "click->modal#open" } %>
+    <div data-modal-target="container"
+      data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard"
+      class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
+      style="z-index: 9999;"
+      >
+      <div class="max-h-screen w-full max-w-2lg relative">
+        <div class="bg-white shadow-xl">
+          <div class="p-8">
+            <div class="my-5">
+              <%= f.label :main_image %>
+              <%= f.file_field :main_image, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+            </div>
+            <div class="my-5">
+              <%= f.label :sub_images %>
+              <%= f.file_field :sub_images, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", multiple: true %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
   <div class="my-5">
     <%= f.label :description %>
     <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
   <div class="my-5">
     <%= f.label :business_attribute %>
     <%= f.select :business_attribute, Post.business_attributes_i18n.invert, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
   <div class="my-5">
     <%= f.label :age_group %>
     <%= f.select :age_group, Post.age_groups_i18n.invert, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
   <div class="my-5">
     <%= f.label :tag_names %>
     <%= f.text_field :tag_names, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: ',で区切って入力してください' %>
   </div>
-
-  <div class="my-5">
-    <%= f.label :main_image %>
-    <%= f.file_field :main_image, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= f.label :sub_images %>
-    <%= f.file_field :sub_images, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", multiple: true %>
-  </div>
-
   <div class="inline">
-    <%= f.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= f.submit name: "submit_post", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
+
+<%= render 'api/v1/items/search' %>
+
