@@ -11,10 +11,10 @@
 #       fill_in 'Email', with: user.email
 #       click_button 'Reset Password'
 #       sleep 2
-#     end  
+#     end
 
 #     fit '正しく入力し、パスワード変更が成功する' do
 #       visit edit_password_reset_path(user.reset_password_token)
 #     end
-#   end    
-# end  
+#   end
+# end

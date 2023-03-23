@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_25_092354) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_064036) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_092354) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "price"
+    t.string "rakuten_url"
+    t.text "caption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "maker"
+    t.string "item_code", null: false
+  end
+
+  create_table "post_items", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id", "post_id"], name: "index_post_items_on_item_id_and_post_id", unique: true
+    t.index ["item_id"], name: "index_post_items_on_item_id"
+    t.index ["post_id"], name: "index_post_items_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
@@ -122,6 +144,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_092354) do
   add_foreign_key "comment_bookmarks", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "post_items", "items"
+  add_foreign_key "post_items", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "taggings", "posts"
   add_foreign_key "taggings", "tags"

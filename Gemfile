@@ -21,6 +21,9 @@ gem "config"
 gem "image_processing"
 gem "dotenv"
 gem "faker"
+gem "rakuten_web_service"
+gem "faraday"
+gem "responders"
 
 
 group :development, :test do
@@ -39,6 +42,7 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem 'letter_opener_web'
+  gem "htmlbeautifier"
 end
 
 group :test do

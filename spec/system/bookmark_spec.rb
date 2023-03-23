@@ -19,4 +19,4 @@ RSpec.describe 'comments', type: :system do
       end
     end
   end
-end        
+end

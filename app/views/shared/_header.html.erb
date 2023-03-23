@@ -1,5 +1,7 @@
 <header class="flex justify-between items-center py-4 md:py-8 mb-4">
-  <%= link_to image_tag('logo.png'), root_path%>
+  <%= link_to root_path do %>
+    <%= image_tag('top_logo.svg', size: '200x100') %>
+  <% end %>
 
   <nav class="hidden lg:flex gap-12">
     <%= link_to 'NewPost', new_post_path, class: "text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100" %>
