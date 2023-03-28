@@ -1,5 +1,5 @@
 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex_test-item">
-  <%= link_to image_tag(post.main_image), post_path(post) %>
+  <%= link_to image_tag(post.images[1]), post_path(post) %>
     <div class="p-5">
       <%= link_to post.title, post_path(post), class: "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" %>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= post.description %></p>
