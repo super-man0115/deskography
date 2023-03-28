@@ -43,10 +43,9 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: '投稿を削除したぜ'
   end
 
-  def search
-    if params[:keyword]
-      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], fields: 'all')
-    end
+  def upload_image
+    @image_blob = create_blob(params[:image])
+    render json: @image_blob
   end
 
   private
@@ -56,6 +55,19 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :business_attribute, :age_group, :main_image, :items1, :items2, :items3, :items4, :items, sub_images: [])
+    params.require(:post).permit(:title, :description, :business_attribute, :age_group).merge(images: uploaded_images)
+  end
+  # アップロード済み画像の検索
+  def uploaded_images
+    params[:post][:images].drop(1).map{|id| ActiveStorage::Blob.find(id)} if params[:post][:images]
+  end
+
+  # blobデータの作成
+  def create_blob(file)
+    ActiveStorage::Blob.create_and_upload!(
+      io: file.open,
+      filename: file.original_filename,
+      content_type: file.content_type
+    )
   end
 end

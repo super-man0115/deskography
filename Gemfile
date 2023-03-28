@@ -24,6 +24,7 @@ gem "faker"
 gem "rakuten_web_service"
 gem "faraday"
 gem "responders"
+gem "whenever", require: false
 
 
 group :development, :test do

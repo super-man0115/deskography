@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :bookmarks
     end
   end
+  post 'posts/upload_image', to: 'posts#upload_image'
   resources :bookmarks, only: %i[create destroy]
   resources :comment_bookmarks, only: %i[create destroy]
   resources :password_resets, only: %i[new create edit update]
