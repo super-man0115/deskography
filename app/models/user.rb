@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :bookmark_posts, through: :bookmarks, source: :post
   has_many :comment_bookmarks, dependent: :destroy
   has_many :comment_bookmark_users, through: :comment_bookmarks, source: :comment
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
   has_one_attached :avatar
 
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }
@@ -14,8 +16,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :reset_password_token, uniqueness: true, allow_nil: true
   validates :email, uniqueness: true
-  validates :email, presence: true
-  validates :user_name, presence: true, length: { maximum: 15 }
+  validates :user_name, presence: true, length: { maximum: 50 }
 
   def own?(object)
     id == object.user.id
