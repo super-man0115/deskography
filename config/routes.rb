@@ -19,4 +19,7 @@ Rails.application.routes.draw do
     get 'search', to: 'items#new'
     post 'items', to: 'items#create'
   end
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback"
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 end

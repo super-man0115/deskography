@@ -36,7 +36,11 @@
     <% unless logged_in? %>
 			<hr class="mb-6 border-t" />
 			<div class="text-center">					
-				<%= link_to 'Already have an account? Login!', login_path, class: "inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" %>
+				<%= link_to 'Already have an account? Login!', login_path, class: "w-full hidden lg:inline-block bg-1D9BF0 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-white active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3" %>
       </div>
-    <% end %>    
+			<%= link_to auth_at_provider_path(provider: :twitter), class: "w-full hidden lg:inline-block bg-1D9BF0 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-white active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3", style: "background-color: #1D9BF0;" do %>
+    <i class="fa-brands fa-twitter" style="color: #ffffff;"></i> Twitterでログイン
+  <% end %>
+    <% end %>
+
 <% end %>

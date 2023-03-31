@@ -1,0 +1,2 @@
+sorcery: 
+  callback_url: 'https://deskographyapp.com/oauth/callback?provider=twitter'

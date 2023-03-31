@@ -19,7 +19,7 @@ end
     age_group: rand(0..5)
   )
 
-  post.main_image.attach(
+  post.images.attach(
     io: File.open('app/assets/images/default.png'),
     filename: 'default.png'
   )
