@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :check_post, only: %i[edit]
 
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc)
+    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show
