@@ -45,4 +45,14 @@ class User < ApplicationRecord
   def comment_bookmark?(comment)
     comment_bookmark_users.include?(comment)
   end
+
+  def default_avatar
+    unless avatar.attached?
+      avatar.attach(
+        io: File.open(Rails.root.join('app','assets', 'images', 'default_avatar.png')),
+        filename: 'default_avatar.png',
+        content_type: 'image/png'
+      )
+    end
+  end
 end

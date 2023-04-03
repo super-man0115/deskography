@@ -3,11 +3,7 @@
     <div class="w-full flex justify-between p-3">
       <div class="flex">
         <div class="rounded-full h-8 w-8 bg-gray-500 flex items-center justify-center overflow-hidden">
-          <div class="avatar">
-            <div class="avatar avatar-md">
-                <%= link_to image_tag(@post.user.decorate.avatar), user_path(@post.user), class: 'rounded-circle avatar-sm' %>
-            </div>
-          </div>
+          <%= link_to image_tag(@post.user.decorate.avatar.variant( resize: "100x100^", gravity: "center", crop: "100x100+0+0" )), user_path(@post.user), class: 'rounded-circle avatar-sm' %>
         </div>
         <span class='pt-1 ml-2 font-bold text-sm'><%= link_to @post.user.user_name, user_path(@post.user) %></span>
       </div>
@@ -26,12 +22,12 @@
           <%= link_to tag.name, '#', class: 'inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
         <% end %> 
         <div class="mb-2 text-sm">
-          <span class="font-medium mr-2"><%= @post.title %></span>
           <div>
             <%= @post.description %>
           </div>  
         </div>
       </div>
+      <%= @post.items.name %>
       <% if current_user.own?(@post) %>
         <%= render '/posts/crud_menus', post: @post %>
       <% else %>

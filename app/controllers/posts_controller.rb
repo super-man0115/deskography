@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :business_attribute, :age_group).merge(images: uploaded_images)
+    params.require(:post).permit(:title, :description, :business_attribute, :age_group, item_ids: []).merge(images: uploaded_images)
   end
   # アップロード済み画像の検索
   def uploaded_images

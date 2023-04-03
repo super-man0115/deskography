@@ -1,0 +1,23 @@
+<%= turbo_frame_tag "item-modal" do %>
+<h1>製品名を入力して検索</h1>
+<div class="search-box" data-controller="item-modal">
+  <%= form_with url: search_path, method: :get, local: false, format: :json do |f| %>
+    <div class="form-group">
+      <%= f.text_field :keyword, value: params[:keyword], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= f.submit '製品名を検索', class: "form-control btn btn-success", data: { action: "submit->item-modal#performSearch" } %>
+    </div>
+  <% end %>
+  <div data-item-modal-target="container"
+    data-action="click->item-modal#closeBackground keyup@window->item-modal#closeWithKeyboard"
+    class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
+    style="z-index: 9999;"
+    >
+    <% if @items.present? %>
+      <%= render "item" %>
+    <% else%>
+      <div>
+        <h2>検索結果がありません</h2>  
+    <% end %>
+  </div>  
+</div>
+<% end %>
