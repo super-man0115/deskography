@@ -26,6 +26,7 @@ gem "rakuten_web_service"
 gem "faraday"
 gem "responders"
 gem "whenever", require: false
+gem "kaminari"
 
 
 group :development, :test do
