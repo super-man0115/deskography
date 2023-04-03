@@ -11,6 +11,7 @@ module Deskography
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.app_generators.scaffold_controller = :responders_controller
+    config.active_storage.variant_processor = :mini_magick
 
   
     config.generators do |g|
