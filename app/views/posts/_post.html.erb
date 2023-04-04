@@ -1,15 +1,19 @@
 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex_test-item">
-  <%= link_to image_tag(post.images[0]), post_path(post) %>
-    <div class="p-5">
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            <%= post.business_attribute_i18n %>
-        </a>
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            <%= post.age_group_i18n %>
-        <% post.tags.each do |tag| %>
-          <%= link_to tag.name, '#', class: 'inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
-        <% end %>
-        </a>
-    </div>
-    <%= link_to "Posted_by" + post.user.user_name, user_path(post.user), class: "mb-2 text-sm text-gray-500" %>
+  <div data-controller="image-slider">
+    <% post.images.each.with_index do |image, index| %>
+      <%= link_to image_tag(image.blob.variant(resize_to_fill: [360, 240])), post_path(post), class: "slide", data: { image_slider_target: "slide" }, style: "display: #{index == 0 ? 'block' : 'none'}" %>
+    <% end %>
+  </div>
+  <div class="p-5">
+    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <%= post.business_attribute_i18n %>
+    </a>
+    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <%= post.age_group_i18n %>
+      <% post.tags.each do |tag| %>
+        <%= link_to tag.name, '#', class: 'inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
+      <% end %>
+    </a>
+  </div>
+  <%= link_to "Posted_by" + post.user.user_name, user_path(post.user), class: "mb-2 text-sm text-gray-500" %>
 </div>
