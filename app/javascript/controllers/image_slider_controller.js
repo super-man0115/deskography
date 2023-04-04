@@ -1,19 +1,33 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="image-slider"
 export default class extends Controller {
-  static targets = ["slide"]
+  static targets = ["slide", "arrow"]
 
-  initialize() {
+  connect() {
     this.index = 0
-    this.interval = setInterval(() => {
-      this.nextSlide()
-    }, 7000)// 7000ミリ秒ごとに画像が切り替わる
+    this.updateArrows()
   }
 
   nextSlide() {
-    this.slideTargets[this.index].style.display = "none"
     this.index = (this.index + 1) % this.slideTargets.length
-    this.slideTargets[this.index].style.display = "block"
+    this.showSlide()
+  }
+
+  previousSlide() {
+    this.index = (this.index - 1 + this.slideTargets.length) % this.slideTargets.length
+    this.showSlide()
+  }
+
+  showSlide() {
+    this.slideTargets.forEach((slide, i) => {
+      slide.style.display = i === this.index ? "block" : "none"
+    })
+    this.updateArrows()
+  }
+
+  updateArrows() {
+    this.arrowTargets.forEach((arrow) => {
+      arrow.href = `#slide${(this.index + (arrow.classList.contains("left-arrow") ? -1 : 1) + this.slideTargets.length) % this.slideTargets.length + 1}`
+    })
   }
 }
