@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   resources :users, only: %i[new create show edit update]
   resources :posts do
-    resources :comments, only: %i[create destroy], shallow: true
+    resources :comments, only: %i[create destroy update], shallow: true
     collection do
       get :bookmarks
     end
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[create destroy]
   resources :comment_bookmarks, only: %i[create destroy]
   resources :password_resets, only: %i[new create edit update]
+  
   get 'search', to: 'items#search'
   post 'items', to: 'items#create'
   post "oauth/callback", to: "oauths#callback"

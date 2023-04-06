@@ -4,8 +4,8 @@
   </span>
   <div class="hidden mt-2 origin-top-right absolute right-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10" data-dropdown-target="menu">
     <div class="py-1" role="menu" aria-orientation="vertical">
-      <%= link_to "Edit", '#', class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-      <%= link_to "Delete", comment_path(comment), class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
+      <%= link_to "Edit", comment_path(comment), class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", remote: true %>
+      <%= link_to "Delete", comment_path(comment), class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", remote: true, data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
     </div>
   </div>
 </div>

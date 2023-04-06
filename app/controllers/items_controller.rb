@@ -18,10 +18,7 @@ class ItemsController < ApplicationController
         end
       end
       
-      respond_to do |format|
-        format.html
-        format.json { render json: @items }
-      end  
+      render '_search'
     end
   
     def create
