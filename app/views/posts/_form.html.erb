@@ -1,61 +1,60 @@
 <%= form_with model: post, class: "contents", local: true, id: "post_form", data: { controller: "images" } do |f| %>
-  <div class='flex justify-center '>
   <%= render "shared/error_messages", object: f.object %>
-  <div class="my-5" data-controller="modal">
-    <%= link_to image_tag('new_posts.svg'), search_path, data: { action: "click->modal#open" } %>
-    <div data-modal-target="container"
-      data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard"
-      class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
-      style="z-index: 9999;"
-      >
-      <div class="max-h-screen w-full max-w-2lg relative">
-        <div class="bg-white shadow-xl">
-          <div class="p-8">
-            <div class="my-5">
-              <%= f.label :images %>
-              <%= f.file_field :images, multiple: true, accept: "image/jpeg, image/gif, image/png",class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { images_target: "select", action: "change->images#selectImages" } %>
-            </div>
-            <div data-images-target="preview">
-              <% if post.images.attached? %>
-                <% post.images.each do |image| %>
-                  <div class="image-box inline-flex mx-1 mb-5" data-controller="images" data-images-target= "image_box">
-                    <div class="text-center">
-                      <%= image_tag image, width: "100" %>
-                      <a class="link cursor-pointer" data-action="click->images#deleteImage">削除</a>
-                      <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
+  <div class='flex flex-row'>
+    <div class="my-5" data-controller="modal">
+      <%= link_to image_tag('new_posts.svg', size: '1000x400' ), '#', data: { action: "click->modal#open" } %>
+      <div data-modal-target="container"
+          data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard"
+        class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
+        style="z-index: 9999;"
+        >
+        <div class="max-h-screen w-full max-w-2lg relative">
+          <div class="bg-white shadow-xl">
+            <div class="p-8">
+              <div class="my-5">
+                <%= f.label :images %>
+                <%= f.file_field :images, multiple: true, accept: "image/jpeg, image/gif, image/png",class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { images_target: "select", action: "change->images#selectImages" } %>
+              </div>
+              <div data-images-target="preview">
+                <% if post.images.attached? %>
+                  <% post.images.each do |image| %>
+                    <div class="image-box inline-flex mx-1 mb-5" data-controller="images" data-images-target= "image_box">
+                      <div class="text-center">
+                        <%= image_tag image, width: "100" %>
+                        <a class="link cursor-pointer" data-action="click->images#deleteImage">削除</a>
+                        <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
+                      </div>
                     </div>
-                  </div>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="flex-col justfy-center">
-  <div class="my-5">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-  <div class="my-5">
-    <%= f.label :business_attribute %>
-    <%= f.select :business_attribute, Post.business_attributes_i18n.invert, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-  <div class="my-5">
-    <%= f.label :age_group %>
-    <%= f.select :age_group, Post.age_groups_i18n.invert, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-  <div class="my-5">
-    <%= f.label :tag_names %>
-    <%= f.text_field :tag_names, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: ',で区切って入力してください' %>
-  </div>
-
-    <%= f.hidden_field :item_ids %>
-  <div class="inline">
-    <%= f.submit name: "submit_post", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
-  </div>
+    <div class="flex-col justfy-center">
+      <div class="my-5">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6" %>
+      </div>
+      <div class="my-5">
+        <%= f.label :business_attribute %>
+        <%= f.select :business_attribute, Post.business_attributes_i18n.invert, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6" %>
+      </div>
+      <div class="my-5">
+        <%= f.label :age_group %>
+        <%= f.select :age_group, Post.age_groups_i18n.invert, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6" %>
+      </div>
+      <div class="my-5">
+        <%= f.label :tag_names %>
+        <%= f.text_field :tag_names, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6", placeholder: ',で区切って入力してください' %>
+      </div>
+      <%= f.hidden_field :item_ids %>
+      <div class="inline">
+        <%= f.submit name: "submit_post", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      </div>
+    </div>
   </div>
 <% end %>
-<%= render 'items/search' %>
+<%= render "items/search" %>
