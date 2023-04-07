@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @item = Item.find(params[:item_id]) if params[:item_id]
   end
 
   def create
