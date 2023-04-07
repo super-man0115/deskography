@@ -36,7 +36,7 @@
     <div class="flex-col justfy-center">
       <div class="my-5">
         <%= f.label :description %>
-        <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6" %>
+        <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6", value: params[:item_id] %>
       </div>
       <div class="my-5">
         <%= f.label :business_attribute %>
@@ -50,7 +50,9 @@
         <%= f.label :tag_names %>
         <%= f.text_field :tag_names, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6", placeholder: ',で区切って入力してください' %>
       </div>
-      <%= f.hidden_field :item_ids %>
+      <% if @item.present? %>
+        <%= f.hidden_field :item_ids, multiple: true, value: @item.id %>
+      <% end %>
       <div class="inline">
         <%= f.submit name: "submit_post", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
       </div>
@@ -58,3 +60,4 @@
   </div>
 <% end %>
 <%= render "items/search" %>
+
