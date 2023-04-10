@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :comment_bookmarks, dependent: :destroy
   has_many :comment_bookmark_users, through: :comment_bookmarks, source: :comment
   has_many :authentications, dependent: :destroy
+  has_many :user_items, dependent: :destroy
+  has_many :items, through: :user_items
   accepts_nested_attributes_for :authentications
   has_one_attached :avatar
 
@@ -55,4 +57,10 @@ class User < ApplicationRecord
       )
     end
   end
+
+  def associate(item)
+    item.save!
+    user_items.create!(item_id: item.id)
+  end  
+
 end

@@ -129,38 +129,9 @@ export default class extends Controller {
     document.documentElement.scrollTop = this.scrollPosition
   }
 
-  async performSearch(event) {
+  submitSearchForm(event) {
     event.preventDefault();
-  
-    const formData = new FormData(event.target);
-    const response = await fetch(event.target.action, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json'
-      },
-      body: formData
-    });
-  
-    if (response.ok) {
-      const items = await response.json();
-      this.updateResults(items);
-    } else {
-      console.error('検索リクエストに失敗しました。');
-    }
-  }
-
-  updateResults(items) {
-    let itemsHTML = '';
-  
-    if (items.length > 0) {
-      items.forEach(item => {
-        itemsHTML += `<div class="item">${item.name}</div>`;
-      });
-    } else {
-      itemsHTML = '<h2>検索結果がありません</h2>';
-    }
-  
-    this.containerTarget.innerHTML = itemsHTML;
-    this.open();
+    const form = document.getElementById('search-form');
+    form.dispatchEvent(new Event('submit', {bubbles: true, cancelable: true}));
   }
 }
