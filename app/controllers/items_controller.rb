@@ -2,9 +2,12 @@ class ItemsController < ApplicationController
     include ActionController::RespondWith
     respond_to :html, :json
     skip_before_action :require_login, only: %i[search]
+
+    def index
+      @items = current_user.items
+    end  
   
     def search
-      request.format = :json
       @items = []
       if params[:keyword]
         results = RakutenWebService::Ichiba::Product.search({
@@ -27,12 +30,13 @@ class ItemsController < ApplicationController
       unless @item.persisted?
         results = RakutenWebService::Ichiba::Product.search(productId: @item.item_code)
         @item = Item.new(read(results.first))
-        @item.save
+        @item.save!
       end
-  
-      redirect_to new_post_path(item_id: @item.id)
-  
-    end  
+
+      current_user.associate(@item)
+      redirect_to items_path, notice: '商品を登録しました'
+    end
+
     private
   
     def read(result)
