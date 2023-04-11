@@ -27,7 +27,7 @@ gem "faraday"
 gem "responders"
 gem "whenever", require: false
 gem "kaminari"
-gem "sassc"
+gem "meta-tags"
 
 
 group :development, :test do
