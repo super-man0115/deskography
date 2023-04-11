@@ -84,6 +84,9 @@
           <% end %>
         </div>
       </div>
+      <%= link_to "https://twitter.com/share?url?=#{request.url}/&text=#{@post.description}に参加します! %0a %23もくもく会", title: 'Twitter', target: '_blank' do %>
+        <i class="fab fa-twitter fa-2x" style='color: #3399FF;'></i>
+      <% end %>
       <div class="flex justify-center">
         <%= render 'comments/form', { post: @post, comment: @comment } %>
       </div>
