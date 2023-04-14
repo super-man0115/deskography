@@ -10,12 +10,6 @@
     <% post.tags.each do |tag| %>
       <%= link_to tag.name, '#', class: "mb-2 text-sm text-gray-500" %>
     <% end %>
-
-    <% post.items.each do |item| %>
-      <% if item.maker.present? %>
-        <%= link_to "#" + item.maker, '#', class: "mb-2 text-sm text-gray-500" %>
-      <% end %>  
-    <% end %>  
   </div>
   <%= link_to "Posted_by" + post.user.user_name, user_path(post.user), class: "mb-2 text-sm text-gray-500" %>
 </div>

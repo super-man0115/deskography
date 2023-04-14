@@ -60,7 +60,7 @@ class User < ApplicationRecord
 
   def associate(item)
     item.save!
-    user_items.create!(item_id: item.id)
-  end  
+    user_items.create!(item_id: item.id) unless self.items.include?(item)
+  end
 
 end

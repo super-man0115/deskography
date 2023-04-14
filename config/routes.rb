@@ -18,10 +18,8 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[create destroy]
   resources :comment_bookmarks, only: %i[create destroy]
   resources :password_resets, only: %i[new create edit update]
-  
+  resources :items, only: %i[index create destroy]
   get 'search', to: 'items#search'
-  post 'items', to: 'items#create'
-  get 'items', to: 'items#index'
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
