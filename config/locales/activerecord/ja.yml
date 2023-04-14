@@ -37,6 +37,7 @@ ja:
         marketer: 'マーケター'
         project_manager: 'プロジェクトマネージャー'
         investor: '投資家'
+        apprentice: '見習い'
         other: 'その他'
       age_group: 
         twenties: '20代'

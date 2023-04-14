@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
       if params[:keyword]
         results = RakutenWebService::Ichiba::Product.search({
           keyword: params[:keyword],
-          hits: 10
+          hits: 15
         })
   
         results.each do |result|
@@ -36,6 +36,11 @@ class ItemsController < ApplicationController
       current_user.associate(@item)
       redirect_to items_path, notice: '商品を登録しました'
     end
+
+    def destroy
+      @item = Item.find(params[:id])
+      @item.destroy
+    end  
 
     private
   

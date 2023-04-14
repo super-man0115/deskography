@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   validates :images, attached_file_number: { maximum: 10 }
 
   enum :business_attribute, {
-    engineer: 0, designer: 1, writer: 2, customer_support: 3, sales: 4, back_officer: 5, consultant: 6, marketer: 7, project_manager: 8, investor: 9, other: 10
+    engineer: 0, designer: 1, writer: 2, customer_support: 3, sales: 4, back_officer: 5, consultant: 6, marketer: 7, project_manager: 8, investor: 9, apprentice: 10, other: 10
   }
 
   enum :age_group, {

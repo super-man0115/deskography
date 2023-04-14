@@ -1,9 +1,8 @@
-<h1>製品名を入力して検索</h1>
 <div class="search-box">
-  <%= form_with url: search_path, method: :get, remote: true do |f| %>
+  <%= form_with url: search_path, method: :get, remote: true do |b| %>
     <div class="form-group">
-      <%= f.text_field :keyword, value: params[:keyword], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-      <%= f.submit '製品名を検索', class: "form-control btn btn-success" %>
+      <%= b.text_field :keyword, value: params[:keyword], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: 'アイテム名、またはメーカー名で検索' %>
+      <%= b.submit '製品名を検索', class: "form-control btn btn-success" %>
     </div>
   <% end %>
   <% if @items.present? %>
