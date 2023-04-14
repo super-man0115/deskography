@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   
     def search
       @items = []
-      if params[:keyword]
+      if params[:keyword].present?
         results = RakutenWebService::Ichiba::Product.search({
           keyword: params[:keyword],
           hits: 15
@@ -19,6 +19,9 @@ class ItemsController < ApplicationController
           item = Item.new(read(result))
           @items << item
         end
+      else
+        @items = []
+        flash.now[:alert] = 'キーワードを入力してください'
       end
       
       render '_search'

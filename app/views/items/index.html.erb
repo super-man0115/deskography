@@ -1,9 +1,11 @@
 <div class="mx-auto md:w-2/3 w-full">
   <div class="search-box">
-    <%= form_with url: search_path, method: :get, remote: true do |b| %>
-      <div class="form-group">
-        <%= b.text_field :keyword, value: params[:keyword], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: 'アイテム名、またはメーカー名で検索' %>
-        <%= b.submit '製品名を検索', class: "form-control btn btn-success" %>
+    <%= form_with url: search_path, method: :get, remote: true do |f| %>
+      <div class="form-group flex flex-col">
+        <%= f.text_field :keyword, value: params[:keyword], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: 'アイテム名、またはメーカー名で検索' %>
+        <div class="mt-2 flex justify-end">
+          <%= f.submit '製品名を検索', class: "form-control btn btn-success justify-center" %>
+        </div>
       </div>
     <% end %>
   </div>
