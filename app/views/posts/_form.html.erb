@@ -1,8 +1,11 @@
+<div class="search-form">
+  <%= render 'items/search' %>
+</div>
 <%= form_with model: post, class: "contents post-form", id: 'post_form', local: true, data: { controller: "images" } do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class='flex flex-row'>
     <div class="my-5" data-controller="modal">
-      <%= link_to image_tag('new_posts.svg', size: '1000x400' ), '#', data: { action: "click->modal#open" } %>
+      <%= link_to image_tag('new_posts.svg', size: '1100x400' ), '#', data: { action: "click->modal#open" } %>
       <div data-modal-target="container"
           data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard"
         class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
@@ -13,6 +16,7 @@
             <div class="p-8">
               <div class="my-5" data-controller="modal">
                 <%= f.label :images %>
+                <p class="text-sm text-gray-600">画像は最大10枚まで投稿できます</p>
                 <%= f.file_field :images, multiple: true, accept: "image/jpeg, image/gif, image/png",class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { images_target: "select", action: "change->images#selectImages" } %>
               </div>
               <div data-images-target="preview">
@@ -33,10 +37,10 @@
         </div>
       </div>
     </div>
-    <div class="flex-col justfy-center">
+    <div class="flex-col justfy-center w-2/3">
       <div class="my-5">
         <%= f.label :description %>
-        <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6", value: params[:item_id] %>
+        <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6", placeholder: 'こだわりのポイントなど'%>
       </div>
       <div class="my-5">
         <%= f.label :business_attribute %>
@@ -98,9 +102,6 @@
     <% end %>
   </div>
   <div class="inline flex justify-center">
-    <%= f.submit name: "submit_post", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= f.submit name: "submit_post", class: "form-control btn btn-success justify-center text-white" %>
   </div>
 <% end %>
-<div class="search-form">
-  <%= render 'items/search' %>
-</div>
