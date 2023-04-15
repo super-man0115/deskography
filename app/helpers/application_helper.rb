@@ -9,7 +9,10 @@ module ApplicationHelper
       keyword: 'デスク, ガジェット, エンジニア, プログラマー, デスクツアー, リモートワーク, デスクワーク',
       canonical: request.original_url,
       separator: '|',
-      icon: image_url('main_logo1.svg'),
+      icon: [
+        { href: image_url('main_logo1.svg') },
+        { href: image_url('main_logo1.svg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg'}
+      ],
       og: {
         site_name: :site,
         title: :title,
@@ -21,7 +24,7 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        image: image_url('ogp.png'),
+        site: '@Deskography',
       }  
     }
   end  
