@@ -6,4 +6,3 @@ RakutenWebService.configure do |c|
   c.max_retries = 3
   c.debug = true
 end
-

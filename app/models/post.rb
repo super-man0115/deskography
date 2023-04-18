@@ -44,5 +44,4 @@ class Post < ApplicationRecord
   def comment_like_count
     comment_bookmark_users.count
   end
-
 end

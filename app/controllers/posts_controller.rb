@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    
+
     if @post.save_with_tags(tag_names: params.dig(:post, :tag_names).split(',').uniq)
       redirect_to posts_path, notice: '投稿完了！！'
     else
@@ -57,9 +57,10 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :description, :business_attribute, :age_group, item_ids: []).merge(images: uploaded_images)
   end
+
   # アップロード済み画像の検索
   def uploaded_images
-    params[:post][:images].drop(1).map{|id| ActiveStorage::Blob.find(id)} if params[:post][:images]
+    params[:post][:images].drop(1).map { |id| ActiveStorage::Blob.find(id) } if params[:post][:images]
   end
 
   # blobデータの作成
