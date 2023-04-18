@@ -84,7 +84,3 @@ test:
 #
 production:
   <<: *default
-  database: cleocv2hl002vagp56x8y07zk
-  username: cleocv2hk002tagp526l1h56n
-  password: <%= ENV["DESKOGRAPHY_DATABASE_PASSWORD"] %>
-  url: <%= ENV["DATABASE_URL"] %>

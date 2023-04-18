@@ -11,7 +11,7 @@ module ApplicationHelper
       separator: '|',
       icon: [
         { href: image_url('main_logo1.svg') },
-        { href: image_url('main_logo1.svg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg'}
+        { href: image_url('main_logo1.svg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' }
       ],
       og: {
         site_name: :site,
@@ -20,12 +20,12 @@ module ApplicationHelper
         type: 'website',
         url: request.original_url,
         locale: 'ja_JP',
-        image: image_url('ogp.png'),
+        image: image_url('ogp.png')
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@Deskography',
-      }  
+        site: '@Deskography'
+      }
     }
-  end  
+  end
 end

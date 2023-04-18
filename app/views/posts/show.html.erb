@@ -88,7 +88,7 @@
           </div>
         </div>
       </div>
-      <%= link_to "https://twitter.com/share?url?=https://deskographyapp.com/&text=#{@post.user.user_name}さんの自慢のデスクです✨ %0a %23Deskography %23デスクツアー %23デスクワーク", title: 'Twitter', target: '_blank' do %>
+      <%= link_to "https://twitter.com/share?text=#{@post.user.user_name}さんの自慢のデスクです✨ %0a %23Deskography%23デスクツアー%23リモートワーク%0a&url=#{request.url}", title: 'Twitter', target: '_blank' do %>
         <i class="fab fa-twitter fa-2x" style='color: #3399FF;'></i>
       <% end %>
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>

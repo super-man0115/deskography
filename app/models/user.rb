@@ -49,18 +49,18 @@ class User < ApplicationRecord
   end
 
   def default_avatar
-    unless avatar.attached?
-      avatar.attach(
-        io: File.open(Rails.root.join('app','assets', 'images', 'default_avatar.png')),
-        filename: 'default_avatar.png',
-        content_type: 'image/png'
-      )
-    end
+    return if avatar.attached?
+
+    avatar.attach(
+      io: File.open(Rails.root.join('app', 'assets', 'images', 'default_avatar.png')),
+      filename: 'default_avatar.png',
+      content_type: 'image/png'
+    )
+    
   end
 
   def associate(item)
     item.save!
-    user_items.create!(item_id: item.id) unless self.items.include?(item)
+    user_items.create!(item_id: item.id) unless items.include?(item)
   end
-
 end

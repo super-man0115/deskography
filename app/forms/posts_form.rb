@@ -39,5 +39,5 @@ class PostsForm
     end
 
     true
-  end 
-end  
+  end
+end
