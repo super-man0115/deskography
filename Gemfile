@@ -55,6 +55,10 @@ group :test do
   gem "webdrivers"
 end
 
+group :production do
+  gem "aws-sdk-s3"
+end
+
 gem "dockerfile-rails", ">= 1.2", group: :development
 
 gem "redis", "~> 5.0"
