@@ -56,7 +56,7 @@ group :test do
 end
 
 group :production do
-  gem "aws-sdk-s3"
+  gem "aws-sdk-s3", require: false
 end
 
 gem "dockerfile-rails", ">= 1.2", group: :development
