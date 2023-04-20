@@ -24,7 +24,8 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@Deskography'
+        site: '@Deskography',
+        image: image_url('ogp.png')
       }
     }
   end
