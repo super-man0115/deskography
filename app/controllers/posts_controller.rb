@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save_with_tags(tag_names: params.dig(:post, :tag_names).split(',').uniq)
-      redirect_to posts_path, notice: '投稿完了！！'
+      redirect_to post_path(@post)
     else
       render :new, status: :unprocessable_entity
     end
