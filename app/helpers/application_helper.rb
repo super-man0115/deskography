@@ -5,7 +5,7 @@ module ApplicationHelper
       title: 'Deskography',
       reverse: true,
       charset: 'utf-8',
-      description: 'Make Your Desk! Make Your Happy!',
+      description: 'Make Your Desk! Make Your Happy! Desk(机)とgraphy(表現)を組み合わせた造語で、デスク周辺のガジェットやレイアウトを写真や情報として共有、探索できるサービスです',
       keyword: 'デスク, ガジェット, エンジニア, プログラマー, デスクツアー, リモートワーク, デスクワーク',
       canonical: request.original_url,
       separator: '|',
