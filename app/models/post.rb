@@ -10,8 +10,7 @@ class Post < ApplicationRecord
   has_many :items, through: :post_items
   has_many_attached :images
 
-  validates :title, length: { maximum: 10 }
-  validates :description, length: { maximum: 255 }
+  validates :description, length: { maximum: 555 }
   validates :images, attached_file_presence: true
   validates :images, attached_file_number: { maximum: 10 }
 
