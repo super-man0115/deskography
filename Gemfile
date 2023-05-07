@@ -28,6 +28,7 @@ gem "responders"
 gem "whenever", require: false
 gem "kaminari"
 gem "meta-tags"
+gem "ransack"
 
 
 group :development, :test do

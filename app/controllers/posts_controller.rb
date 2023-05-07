@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :check_post, only: %i[edit]
 
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -71,4 +72,6 @@ class PostsController < ApplicationController
       content_type: file.content_type
     )
   end
+
+  
 end
