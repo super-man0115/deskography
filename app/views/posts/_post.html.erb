@@ -5,10 +5,10 @@
     <% end %>
   </div>
   <div class="p-5">
-    <%= link_to "#" + post.business_attribute_i18n, '#', class: "mb-2 text-sm text-gray-500" %>
-    <%= link_to "#" + post.age_group_i18n, '#', class: "mb-2 text-sm text-gray-500" %>
+    <%= link_to "#" + post.business_attribute_i18n, posts_path(q: { business_attribute_eq: post.business_attribute }), class: "mb-2 text-sm text-gray-500" %>
+    <%= link_to "#" + post.age_group_i18n, posts_path(q: { age_group_eq: post.age_group }), class: "mb-2 text-sm text-gray-500" %>
     <% post.tags.each do |tag| %>
-      <%= link_to tag.name, '#', class: "mb-2 text-sm text-gray-500" %>
+      <%= link_to "#" + tag.name, posts_path(q: { tags_name_eq: tag.name }), class: "mb-2 text-sm text-gray-500" %>
     <% end %>
   </div>
   <%= link_to "Posted_by" + post.user.user_name, user_path(post.user), class: "mb-2 text-sm text-gray-500" %>
