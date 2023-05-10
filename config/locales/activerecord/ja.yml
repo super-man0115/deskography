@@ -22,8 +22,7 @@ ja:
         business_attribute: '職業'
         age_group: '年齢'
         tag_names: 'タグ'
-        main_image: 'メイン画像'
-        sub_images: 'サブ画像'
+        images: '画像'
   enums:
     post:
       business_attribute:
