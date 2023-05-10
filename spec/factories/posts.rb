@@ -7,7 +7,7 @@ FactoryBot.define do
     user
 
     after(:build) do |post|
-      post.main_image.attach(io: File.open('spec/fixtures/test_default.png'), filename: 'test_default.png', content_type: 'image/png')
+      post.images.attach(io: File.open('spec/fixtures/test_default.png'), filename: 'test_default.png', content_type: 'image/png')
     end
   end
 end

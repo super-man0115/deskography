@@ -8,8 +8,8 @@ RSpec.describe 'comments', type: :system do
   before { login_as(user) }
 
   describe 'ブックマーク機能の確認' do
-    context '未ブックマークの投稿にいいねできる' do
-      fit 'いいねができる' do
+    context '未ブックマークの投稿にいいねできる', js: true do
+      it 'いいねができる' do
         visit post_path(post)
 
         expect(page).to have_css "i.fa-regular.fa-heart"

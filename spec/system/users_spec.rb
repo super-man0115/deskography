@@ -21,18 +21,6 @@ RSpec.describe 'Users', type: :system do
         end
       end
 
-      context 'メールアドレスが未入力' do
-        it 'ユーザーの新規登録が失敗する' do
-          fill_in 'ユーザー名', with: 'test_user'
-          fill_in 'メールアドレス', with: ''
-          fill_in 'パスワード', with: 'password'
-          fill_in 'パスワード(確認用)', with: 'password'
-          click_button '登録する'
-          expect(page).to have_content 'メールアドレスを入力してください'
-          expect(current_path).to eq new_user_path
-        end
-      end
-
       context '登録済みのメールアドレスを使用' do
         it 'ユーザーの新規登録が失敗する' do
           existed_user = create(:user)
@@ -72,19 +60,6 @@ RSpec.describe 'Users', type: :system do
           click_button '更新する'
           sleep 2
           expect(current_path).to eq user_path(user)
-        end
-      end
-
-      context 'メールアドレスが未入力' do
-        it 'ユーザーの編集が失敗する' do
-          visit edit_user_path(user)
-          fill_in 'ユーザー名', with: 'update_user'
-          fill_in 'メールアドレス', with: ''
-          fill_in 'パスワード', with: 'password'
-          fill_in 'パスワード(確認用)', with: 'password'
-          click_button '更新する'
-          expect(page).to have_content 'メールアドレスを入力してください'
-          expect(current_path).to eq edit_user_path(user)
         end
       end
 

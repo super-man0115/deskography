@@ -8,7 +8,11 @@ ja:
       title: 'ユーザー登録'
       to_login_page: 'ログインページへ'
     edit:
-      title: 'ユーザー編集' 
+      title: 'ユーザー編集'
+    form:
+      to_login_page: 'アカウントをお持ちですか？　ログインページへ'
+      twitter_login: 'Twitterでログイン'
+      guest_login: 'ゲストログイン'
   user_sessions:
     new:
       title: 'ログイン'
@@ -17,3 +21,6 @@ ja:
     form:  
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
+      login_with_social: 'ソーシャルアカウントでログイン'
+      twitter_login: 'Twitterでログイン'
+      guest_login: 'ゲストログイン'

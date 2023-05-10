@@ -6,7 +6,8 @@ class ItemsController < ApplicationController
   def index
     @items = current_user.items
   end
-
+  
+  # RakutenApiを使用して商品を検索する。検索結果を@itemsに代入する。readというプライベートメソッドで商品データを読み取り扱いやすいハッシュに変換している
   def search
     @items = []
     if params[:keyword].present?
@@ -27,6 +28,7 @@ class ItemsController < ApplicationController
     render '_search'
   end
 
+  #指定したitem_codeを持つ商品が存在する場合はその値を取得し、存在しない場合はRakutenApiを使用して商品を検索し、@itemに代入する。associateメソッドでcurrent_userと@itemを関連付ける
   def create
     @item = Item.find_or_initialize_by(item_code: params[:item_code])
 

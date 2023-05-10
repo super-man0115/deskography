@@ -15,7 +15,7 @@ RSpec.describe 'UserSessions', type: :system do
       end
     end
 
-    context 'フォームが未入力' do
+    context 'メールアドレスが未入力' do
       it 'ログイン処理が失敗する' do
         visit login_path
         fill_in 'メールアドレス', with: ''
@@ -23,6 +23,28 @@ RSpec.describe 'UserSessions', type: :system do
         click_button 'Login'
         expect(page).to have_content 'メールアドレスまたはパスワードが違います'
         expect(current_path).to eq login_path
+      end
+    end
+
+    context 'パスワードが未入力' do
+      it 'ログイン処理が失敗する' do
+        visit login_path
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: ''
+        click_button 'Login'
+        expect(page).to have_content 'メールアドレスまたはパスワードが違います'
+        expect(current_path).to eq login_path
+      end
+    end
+  end
+
+  describe 'ゲストログイン' do
+    context 'ゲストログインボタンをクリック' do
+      it 'ゲストユーザーとしてログイン' do
+        visit login_path
+        click_on 'ゲストログイン'
+        expect(page).to have_content 'ゲストユーザーとしてログインしました'
+        expect(current_path).to eq root_path
       end
     end
   end
