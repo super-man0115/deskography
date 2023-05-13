@@ -6,7 +6,7 @@
       <%= image_tag "Top3.jpg", class: "w-full h-full object-cover object-center absolute inset-0" %>
       <div class="sm:max-w-xl flex flex-col items-center relative p-4">
         <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-8 md:mb-12">Make Your Desk! Make Your Happy!</h1>
-
+        <p class="text-white">あなたの自慢のデスクを共有、他の人のデスクを見てみよう</p>
         <% if !logged_in? %>
           <div class="w-full flex flex-col sm:flex-row sm:justify-center gap-2.5">
             <%= link_to "SignUp", new_user_path, class: "btn btn-accent text-white" %>
