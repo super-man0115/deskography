@@ -17,6 +17,7 @@ https://deskographyapp.com
 
   ####  フロントエンド
   - HotWire(turbo + stimulus)
+  ![hotwire](https://github.com/super-man0115/deskography/assets/66407238/88f67eeb-d56b-41c0-b73f-540d892ba053)
   - tailwind
   
  <br>
