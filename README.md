@@ -17,8 +17,7 @@ https://deskographyapp.com
 
 ### ログイン画面
 <br>
-![login](https://github.com/super-man0115/deskography/assets/66407238/e61744b2-2897-4754-ac1e-2385e3e0542f)
-
+https://github.com/super-man0115/deskography/assets/66407238/eba53f32-9e37-491b-8d06-562e7ef18995
 <br>
 
 ## ■ 使用技術
