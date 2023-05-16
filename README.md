@@ -15,10 +15,21 @@ https://deskographyapp.com
   ![top](https://github.com/super-man0115/deskography/assets/66407238/4ae92388-9d73-4d85-90ae-244b82c67c64)
 <br>
 
-## ■ ログイン画面
+## ■ 使用方法
+
+###  ログイン画面
 ![login](https://github.com/super-man0115/deskography/assets/66407238/19c5a5ae-a84d-463b-bb85-845bc5a4b849)
 
   #####  ゲストログインで使用することができます。
+  
+###  ガジェット登録
+
+  
+###  画像登録
+![image](https://github.com/super-man0115/deskography/assets/66407238/9b002400-c720-4cca-9d15-2f0f37c9c8df)
+
+ActiveStorageを使用した画像アップロードを行なっています。stimulusを使用して画像のプレビュー機能も実装しました。
+削除ボタンを押した画像は投稿には反映されませんがDBには残ってしまうのでwheneverを使用して定期的に削除を実行しています。
 
 ## ■ 使用技術
 
