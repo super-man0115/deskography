@@ -15,10 +15,10 @@ https://deskographyapp.com
   ![top](https://github.com/super-man0115/deskography/assets/66407238/4ae92388-9d73-4d85-90ae-244b82c67c64)
 <br>
 
-### ログイン画面
-<br>
-https://github.com/super-man0115/deskography/assets/66407238/eba53f32-9e37-491b-8d06-562e7ef18995
-<br>
+## ■ ログイン画面
+![login](https://github.com/super-man0115/deskography/assets/66407238/19c5a5ae-a84d-463b-bb85-845bc5a4b849)
+
+  #####  ゲストログインで使用することができます。
 
 ## ■ 使用技術
 
