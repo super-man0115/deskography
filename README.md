@@ -20,9 +20,12 @@ https://deskographyapp.com
 ###  ログイン画面
 ![login](https://github.com/super-man0115/deskography/assets/66407238/19c5a5ae-a84d-463b-bb85-845bc5a4b849)
 
-  #####  ゲストログインで使用することができます。
+ゲストログインで使用することができます。
   
 ###  ガジェット登録
+![item](https://github.com/super-man0115/deskography/assets/66407238/4811f72c-775a-4ee2-8ae3-71b5bed8b82b)
+楽天の商品検索apiを使用しています。
+
 
   
 ###  画像登録
