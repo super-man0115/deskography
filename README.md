@@ -34,6 +34,10 @@ https://deskographyapp.com
 ActiveStorageを使用した画像アップロードを行なっています。stimulusを使用して画像のプレビュー機能も実装しました。
 削除ボタンを押した画像は投稿には反映されませんがDBには残ってしまうのでwheneverを使用して定期的に削除を実行しています。
 
+### 詳細画面
+![show](https://github.com/super-man0115/deskography/assets/66407238/d3aa935c-4e39-4c79-a72d-9c487b84f980)
+stimulusを使用したスライドショー、詳細画面ではカルーセル対応にしました。
+
 ## ■ 使用技術
 
   ####  フロントエンド
