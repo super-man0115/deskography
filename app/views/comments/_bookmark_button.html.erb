@@ -1,5 +1,5 @@
 <% if current_user.comment_bookmark?(comment) %>
-  <%= render 'comments/unbookmark', { comment: comment } %>
+  <%= render 'comments/unbookmark', { comment: } %>
 <% else %>
-  <%= render 'comments/bookmark', { comment: comment } %>
+  <%= render 'comments/bookmark', { comment: } %>
 <% end %>

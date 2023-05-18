@@ -19,7 +19,7 @@
               <img src="<%= item.image %>" alt="" class="w-full h-full object-contain object-center" style="max-width: 128px; max-height: 128px; min-width: 128px; min-height: 128px;">
             </div>
             <div class="absolute top-0 left-0 m-2">
-              <%= link_to item_path(item), data: { turbo_method: :delete}, remote: true do %>
+              <%= link_to item_path(item), data: { turbo_method: :delete }, remote: true do %>
                 <i class="fas fa-times text-red-500 hover:text-red-700"></i>
               <% end %>
             </div>
@@ -31,7 +31,7 @@
               <div class="flex justify-between items-center w-full">
                 <% if item.name.length > 20 %>
                   <div>
-                    <%= link_to truncate(item.name, length: 40, separator: ' '), "#{item.rakuten_url}" %>
+                    <%= link_to truncate(item.name, length: 40, separator: ' '), item.rakuten_url.to_s %>
                     <div class="text-blue-500 hover:text-blue-800 cursor-pointer ml-1" onclick="document.getElementById('modal-<%= item.item_code %>').classList.add('opacity-100', 'pointer-events-auto');">Show more</div>
                     <div id="modal-<%= item.item_code %>" class="fixed inset-0 z-10 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none">
                       <div class="bg-white rounded-lg p-4 max-w-lg mx-auto my-auto">
@@ -42,7 +42,7 @@
                     </div>
                   </div>
                 <% else %>
-                  <%= link_to item.name, "#{item.rakuten_url}" %>
+                  <%= link_to item.name, item.rakuten_url.to_s %>
                 <% end %>
               </div>
             </p>
@@ -54,4 +54,4 @@
 </div>
 <div class="inline flex justify-center">
   <%= link_to '投稿に戻る', new_post_path, class: "form-control btn btn-success justify-center text-white" %>
-</div>  
+</div>

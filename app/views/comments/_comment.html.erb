@@ -2,7 +2,7 @@
   <div class="flex relative grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
     <div class="flex items-center">
       <div class="rounded-full h-8 w-8 bg-gray-500 flex items-center justify-center overflow-hidden">
-        <%= link_to image_tag(comment.user.decorate.avatar.variant( resize: "100x100^", gravity: "center", crop: "100x100+0+0" )), user_path(comment.user), class: 'rounded-full h-8 w-8' %>
+        <%= link_to image_tag(comment.user.decorate.avatar.variant(resize: "100x100^", gravity: "center", crop: "100x100+0+0")), user_path(comment.user), class: 'rounded-full h-8 w-8' %>
       </div>
       <p class="text-gray-400 text-sm ml-2"><%= comment.user.user_name %></p>
     </div>
@@ -13,9 +13,9 @@
       <p class="text-gray-400 text-sm"><%= l comment.created_at, format: :short %></p>
     </div>
     <% if current_user.own?(comment) %>
-      <%= render 'comments/crud_menus', comment: comment %>
+      <%= render 'comments/crud_menus', comment: %>
     <% else %>
-      <%= render 'comments/bookmark_button', comment: comment %>
+      <%= render 'comments/bookmark_button', comment: %>
     <% end %>
   </div>
 </div>

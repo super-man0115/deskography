@@ -1,15 +1,16 @@
 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex_test-item">
   <div data-controller="index-image">
     <% post.images.each.with_index do |image, index| %>
-      <%= link_to image_tag(image.blob.variant(resize_to_fill: [360, 240])), post_path(post), class: "slide", data: { index_image_target: "slide" }, style: "display: #{index == 0 ? 'block' : 'none'}" %>
+      <%= link_to image_tag(image.blob.variant(resize_to_fill: [360, 240])), post_path(post), class: "slide", data: { index_image_target: "slide" },
+                                                                                              style: "display: #{index.zero? ? 'block' : 'none'}" %>
     <% end %>
   </div>
   <div class="p-5">
-    <%= link_to "#" + post.business_attribute_i18n, posts_path(q: { business_attribute_eq: post.business_attribute }), class: "mb-2 text-sm text-gray-500" %>
-    <%= link_to "#" + post.age_group_i18n, posts_path(q: { age_group_eq: post.age_group }), class: "mb-2 text-sm text-gray-500" %>
+    <%= link_to "##{post.business_attribute_i18n}", posts_path(q: { business_attribute_eq: post.business_attribute }), class: "mb-2 text-sm text-gray-500" %>
+    <%= link_to "##{post.age_group_i18n}", posts_path(q: { age_group_eq: post.age_group }), class: "mb-2 text-sm text-gray-500" %>
     <% post.tags.each do |tag| %>
-      <%= link_to "#" + tag.name, posts_path(q: { tags_name_eq: tag.name }), class: "mb-2 text-sm text-gray-500" %>
+      <%= link_to "##{tag.name}", posts_path(q: { tags_name_eq: tag.name }), class: "mb-2 text-sm text-gray-500" %>
     <% end %>
   </div>
-  <%= link_to "Posted_by" + post.user.user_name, user_path(post.user), class: "mb-2 text-sm text-gray-500" %>
+  <%= link_to "Posted_by#{post.user.user_name}", user_path(post.user), class: "mb-2 text-sm text-gray-500" %>
 </div>

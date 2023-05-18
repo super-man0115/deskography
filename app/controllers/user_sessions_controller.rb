@@ -28,5 +28,5 @@ class UserSessionsController < ApplicationController
     )
     auto_login(@guest_user)
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました'
-  end  
+  end
 end

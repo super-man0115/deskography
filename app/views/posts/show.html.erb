@@ -3,7 +3,7 @@
     <div class="w-full flex justify-between p-3">
       <div class="flex">
         <div class="rounded-full h-8 w-8 bg-gray-500 flex items-center justify-center overflow-hidden">
-          <%= link_to image_tag(@post.user.decorate.avatar.variant( resize: "100x100^", gravity: "center", crop: "100x100+0+0" )), user_path(@post.user), class: 'rounded-circle avatar-sm' %>
+          <%= link_to image_tag(@post.user.decorate.avatar.variant(resize: "100x100^", gravity: "center", crop: "100x100+0+0")), user_path(@post.user), class: 'rounded-circle avatar-sm' %>
         </div>
         <span class='pt-1 ml-2 font-bold text-sm'><%= link_to @post.user.user_name, user_path(@post.user) %></span>
       </div>
@@ -23,10 +23,11 @@
     </div>
     <div data-controller="image-slider" class="carousel w-full">
       <% @post.images.each.with_index do |image, index| %>
-        <div id="slide<%= index + 1 %>" class="carousel-item relative w-full" data-image-slider-target="slide" style="display: <%= index == 0 ? 'block' : 'none' %>">
+        <div id="slide<%= index + 1 %>" class="carousel-item relative w-full" data-image-slider-target="slide" style="display: <%= index.zero? ? 'block' : 'none' %>">
           <%= image_tag(image.blob.variant(resize_to_fill: [1000, 600])) %>
           <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <%= link_to "❮", "#slide#{(index - 1 + @post.images.size) % @post.images.size + 1}", class: "btn btn-circle left-arrow", data: { action: "image-slider#previousSlide", image_slider_target: "arrow" } %>
+            <%= link_to "❮", "#slide#{(index - 1 + @post.images.size) % @post.images.size + 1}", class: "btn btn-circle left-arrow",
+                                                                                                 data: { action: "image-slider#previousSlide", image_slider_target: "arrow" } %>
             <%= link_to "❯", "#slide#{(index + 1) % @post.images.size + 1}", class: "btn btn-circle right-arrow", data: { action: "image-slider#nextSlide", image_slider_target: "arrow" } %>
           </div>
         </div>
@@ -37,11 +38,11 @@
         <span class="text text-gray-400 font-medium"><%= @post.age_group_i18n + @post.business_attribute_i18n %></span>
       </div>
       <div>
-        <%= render 'posts/bookmark_button', post: @post  %>
+        <%= render 'posts/bookmark_button', post: @post %>
       </div>
       <div class="pt-1">
         <% @post.tags.each do |tag| %>
-          <%= link_to "#" + tag.name, '#', class: "mb-2 text-sm text-gray-500" %>
+          <%= link_to "##{tag.name}", '#', class: "mb-2 text-sm text-gray-500" %>
         <% end %>
         <div class="mb-2 text-sm">
           <div class="pt-3">
@@ -65,7 +66,7 @@
                         <div class="flex justify-between items-center w-full">
                           <% if item.name.length > 20 %>
                             <div>
-                              <%= link_to truncate(item.name, length: 40, separator: ' '), "#{item.rakuten_url}" %>
+                              <%= link_to truncate(item.name, length: 40, separator: ' '), item.rakuten_url.to_s %>
                               <h1 class="text-base font-bold text-gray-700 dark:text-gray-200 md:text-xl"><%= number_to_currency(item.price, unit: '¥', delimiter: ',', format: '%u%n') %></h1>
                               <div class="text-blue-500 hover:text-blue-800 cursor-pointer ml-1" onclick="document.getElementById('modal-<%= item.item_code %>').classList.add('opacity-100', 'pointer-events-auto');">Show more</div>
                               <div id="modal-<%= item.item_code %>" class="fixed inset-0 z-10 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none">
@@ -77,7 +78,7 @@
                               </div>
                             </div>
                           <% else %>
-                            <%= link_to item.name, "#{item.rakuten_url}" %>
+                            <%= link_to item.name, item.rakuten_url.to_s %>
                             <h1 class="text-base font-bold text-gray-700 dark:text-gray-200 md:text-xl"><%= number_to_currency(item.price, unit: '¥', delimiter: ',', format: '%u%n') %></h1>
                           <% end %>
                         </div>
@@ -96,8 +97,8 @@
       <div class="flex justify-center">
         <%= render 'comments/form', { post: @post, comment: @comment } %>
       </div>
-      <br/>
-      <br/>
+      <br>
+      <br>
       <div class="flex justify-center">
         <%= render 'comments/comments', { comments: @comments } %>
       </div>

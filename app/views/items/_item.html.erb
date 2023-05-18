@@ -1,11 +1,11 @@
 <div class="flex flex-wrap flex-row h-screen justify-center gap-4">
   <% @items.first(15).each do |item| %>
     <div class="my-10 flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 w-1/5">
-      <div class="w-1/3 bg-cover"><%= image_tag (item.image) %></div>
+      <div class="w-1/3 bg-cover"><%= image_tag(item.image) %></div>
       <div class="w-2/3 p-4 md:p-4">
         <h1 class="text-sm font-bold text-gray-800 dark:text-white">
           <% if item[:name].length > 20 %>
-            <%= link_to truncate(item.name, length: 40, separator: ' '), "#{item.rakuten_url}" %>
+            <%= link_to truncate(item.name, length: 40, separator: ' '), item.rakuten_url.to_s %>
             <button class="text-blue-500 hover:text-blue-800" onclick="document.getElementById('modal-<%= item.item_code %>').classList.add('opacity-100', 'pointer-events-auto');"><i class="fa-solid fa-angles-down"></i></button>
             <div id="modal-<%= item.item_code %>" class="fixed inset-0 z-10 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none">
               <div class="bg-white rounded-lg p-4 max-w-lg mx-auto my-auto">
@@ -14,7 +14,7 @@
               </div>
             </div>
           <% else %>
-            <%= link_to item.name, "#{item.rakuten_url}" %>
+            <%= link_to item.name, item.rakuten_url.to_s %>
           <% end %>
         </h1>
         <p class="mt-2 text-xs text-gray-600 dark:text-gray-400">
@@ -33,7 +33,8 @@
           <h1 class="text-base font-bold text-gray-700 dark:text-gray-200 md:text-xl"><%= number_to_currency(item.price, unit: '¥', delimiter: ',', format: '%u%n') %></h1>
           <%= form_with url: items_path, data: { turbo_method: :post }, multiple: true do |f| %>
             <%= f.hidden_field :item_code, value: item.item_code %>
-            <%= f.submit '選択する', class: "px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600" %>
+            <%= f.submit '選択する',
+                         class: "px-2 py-1 text-xs font-bold text-white uppercasetransition-colorsduration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600" %>
           <% end %>
         </div>
       </div>
