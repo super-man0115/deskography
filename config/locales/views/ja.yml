@@ -1,8 +1,23 @@
 ja:
   defaults:
     login: 'ログイン'
-    register: '登録'
+    register: '新規登録'
     logout: 'ログアウト'
+    index: '投稿一覧'
+    new_post: '新規投稿'
+    my_page: 'マイページ'
+    term: '利用規約'
+    privacy: 'プライバシーポリシー'
+    contact: 'お問い合わせ'
+
+  static_pages:
+    index:
+      description: 'あなたの自慢のデスクを共有、他の人のデスクを見てみよう'
+      gadget: '使っているガジェットを登録しよう'
+      image: 'デスクの画像から写真を追加してこだわりのポイントを書こう'
+      share: '投稿をシェアしよう'
+      catchcopy: 'Make Your Desk! Make Your Happy!'
+
   users:
     new:
       title: 'ユーザー登録'

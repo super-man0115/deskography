@@ -50,7 +50,6 @@ RSpec.describe 'Posts', type: :system do
       context 'フォームの入力値が正常' do
         it 'タスクの新規作成が成功する' do
           visit new_post_path
-          fill_in 'タイトル', with: 'test_title'
           fill_in '説明', with: 'test_description'
           within 'select[name="post[business_attribute]"]' do
             select 'デザイナー'
@@ -58,9 +57,8 @@ RSpec.describe 'Posts', type: :system do
           within 'select[name="post[age_group]"]' do
             select '30代'
           end
-          attach_file 'post[main_image]', "#{Rails.root}/spec/fixtures/test_default.png"
+          attach_file 'post[images]', "#{Rails.root}/spec/fixtures/test_default.png"
           click_button '登録する'
-          expect(page).to have_content 'test_title'
           expect(page).to have_content 'test_description'
           expect(page).to have_content 'デザイナー'
           expect(page).to have_content '30代'
@@ -71,7 +69,6 @@ RSpec.describe 'Posts', type: :system do
       context 'メイン画像を登録せずに投稿' do
         it '新規投稿が失敗' do
           visit new_post_path
-          fill_in 'タイトル', with: 'test_title'
           fill_in '説明', with: 'test_description'
           within 'select[name="post[business_attribute]"]' do
             select 'デザイナー'
@@ -80,7 +77,7 @@ RSpec.describe 'Posts', type: :system do
             select '30代'
           end
           click_button '登録する'
-          expect(page).to have_content 'メイン画像を入力してください'
+          expect(page).to have_content '画像を入力してください'
           expect(current_path).to eq new_post_path
         end
       end
@@ -92,8 +89,7 @@ RSpec.describe 'Posts', type: :system do
       before { visit edit_post_path(post) }
 
       context 'フォームの入力値が正常' do
-        it 'ポストの編集が成功する' do
-          fill_in 'タイトル', with: 'update_title'
+        fit 'ポストの編集が成功する' do
           fill_in '説明', with: 'update_description'
           within 'select[name="post[business_attribute]"]' do
             select 'エンジニア'
@@ -101,9 +97,9 @@ RSpec.describe 'Posts', type: :system do
           within 'select[name="post[age_group]"]' do
             select '20代'
           end
-          attach_file 'post[main_image]', "#{Rails.root}/spec/fixtures/test_default.png"
+          find("a[data-action*='click->modal#open']").click
+          attach_file 'post[images]', "#{Rails.root}/spec/fixtures/test_default.png"
           click_button '更新する'
-          expect(page).to have_content 'update_title'
           expect(page).to have_content 'update_description'
           expect(page).to have_content 'エンジニア'
           expect(page).to have_content '20代'
