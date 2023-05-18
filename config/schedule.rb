@@ -19,11 +19,11 @@
 
 # Learn more: http://github.com/javan/whenever
 
-require File.expand_path(File.dirname(__FILE__) + "/environment") # Rails.root(Railsメソッド)を使用するために必要
-rails_env = ENV['RAILS_ENV'] || :development # cronを実行する環境変数(:development, :product, :test)
-set :environment, rails_env # cronを実行する環境変数をセット
-set :output, "#{Rails.root}/log/crontab.log" # cronのログ出力用ファイル
+require File.expand_path(File.dirname(__FILE__) + "/environment")
+rails_env = ENV['RAILS_ENV'] || :development 
+set :environment, rails_env
+set :output, "#{Rails.root}/log/crontab.log" 
 
-every 1.day do # タスクの実行間隔
-  rake "unattached_images:purge" # ← rake "タスクのファイル名 : タスク名"
+every 1.day do
+  rake "unattached_images:purge"
 end

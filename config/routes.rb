@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'static_pages#index'
   get 'privacy', to: 'static_pages#privacy'
   get 'terms', to: 'static_pages#terms'
-  get 'contact', to: redirect('https://docs.google.com/forms/d/e/1FAIpQLSe2yI03uaTbHsrOaG7t86P4v81KMmezm_zJVz1BNOh6-jerSA/viewform')
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
