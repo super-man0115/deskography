@@ -5,28 +5,28 @@
   <%= render "shared/error_messages", object: f.object %>
   <div class='flex flex-row'>
     <div class="my-5" data-controller="modal">
-      <%= link_to image_tag('new_posts.svg', size: '1100x400' ), '#', data: { action: "click->modal#open" } %>
+      <%= link_to image_tag('new_posts.svg', size: '1100x400'), '#', data: { action: "click->modal#open" } %>
       <div data-modal-target="container"
           data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard"
         class="hidden bg-gray-300 bg-opacity-50 fixed inset-0 overflow-y-auto flex items-center justify-center"
-        style="z-index: 9999;"
-        >
+        style="z-index: 9999;">
         <div class="max-h-screen w-full max-w-2lg relative">
           <div class="bg-white shadow-xl">
             <div class="p-8">
               <div class="my-5" data-controller="modal">
                 <%= f.label :images %>
                 <p class="text-sm text-gray-600">画像は最大10枚まで投稿できます</p>
-                <%= f.file_field :images, multiple: true, accept: "image/jpeg, image/gif, image/png",class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { images_target: "select", action: "change->images#selectImages" } %>
+                <%= f.file_field :images, multiple: true, accept: "image/jpeg, image/gif, image/png", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
+                                          data: { images_target: "select", action: "change->images#selectImages" } %>
               </div>
               <div data-images-target="preview">
                 <% if post.images.attached? %>
                   <% post.images.each do |image| %>
-                    <div class="image-box inline-flex mx-1 mb-5" data-controller="images" data-images-target= "image_box">
+                    <div class="image-box inline-flex mx-1 mb-5" data-controller="images" data-images-target="image_box">
                       <div class="text-center">
                         <%= image_tag image, width: "100" %>
                         <a class="link cursor-pointer" data-action="click->images#deleteImage">削除</a>
-                        <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
+                        <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: image.blob.id.to_s %>
                       </div>
                     </div>
                   <% end %>
@@ -40,7 +40,7 @@
     <div class="flex-col justfy-center w-2/3">
       <div class="my-5">
         <%= f.label :description %>
-        <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6", placeholder: 'こだわりのポイントなど'%>
+        <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-5/6", placeholder: 'こだわりのポイントなど' %>
       </div>
       <div class="my-5">
         <%= f.label :business_attribute %>
@@ -67,7 +67,7 @@
                 <img src="<%= item.image %>" alt="" class="w-full h-full object-contain object-center" style="max-width: 128px; max-height: 128px; min-width: 128px; min-height: 128px;">
               </div>
               <div class="absolute top-0 left-0 m-2">
-                <%= link_to item_path(item), data: { turbo_method: :delete}, remote: true do %>
+                <%= link_to item_path(item), data: { turbo_method: :delete }, remote: true do %>
                   <i class="fas fa-times text-red-500 hover:text-red-700"></i>
                 <% end %>
               </div>
@@ -79,7 +79,7 @@
                 <div class="flex justify-between items-center w-full">
                   <% if item.name.length > 10 %>
                     <div>
-                      <%= link_to truncate(item.name, length: 40, separator: ' '), "#{item.rakuten_url}" %>
+                      <%= link_to truncate(item.name, length: 40, separator: ' '), item.rakuten_url.to_s %>
                       <div class="text-blue-500 hover:text-blue-800 cursor-pointer ml-1" onclick="document.getElementById('modal-<%= item.item_code %>').classList.add('opacity-100', 'pointer-events-auto');">Show more</div>
                       <div id="modal-<%= item.item_code %>" class="fixed inset-0 z-10 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none">
                         <div class="bg-white rounded-lg p-4 max-w-lg mx-auto my-auto">
@@ -90,12 +90,12 @@
                       </div>
                     </div>
                   <% else %>
-                    <%= link_to item.name, "#{item.rakuten_url}" %>
+                    <%= link_to item.name, item.rakuten_url.to_s %>
                   <% end %>
                 </div>
               </p>
             </div>
-            <%= f.hidden_field :item_ids, name: "post[item_ids][]", value: "#{item.id}" %>
+            <%= f.hidden_field :item_ids, name: "post[item_ids][]", value: item.id.to_s %>
           <% end %>
         </div>
       </div>

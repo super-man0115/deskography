@@ -48,6 +48,7 @@ group :development do
   gem "rubocop-rspec", require: false
   gem 'letter_opener_web'
   gem "htmlbeautifier"
+  gem "erb_lint", require: false
 end
 
 group :test do

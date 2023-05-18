@@ -20,9 +20,9 @@
 # Learn more: http://github.com/javan/whenever
 
 require File.expand_path(File.dirname(__FILE__) + "/environment")
-rails_env = ENV['RAILS_ENV'] || :development 
+rails_env = ENV['RAILS_ENV'] || :development
 set :environment, rails_env
-set :output, "#{Rails.root}/log/crontab.log" 
+set :output, "#{Rails.root}/log/crontab.log"
 
 every 1.day do
   rake "unattached_images:purge"

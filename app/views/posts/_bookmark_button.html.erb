@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <% if current_user.bookmark?(post) %>
-    <%= render 'posts/unbookmark', { post: post } %>
+    <%= render 'posts/unbookmark', { post: } %>
   <% else %>
-    <%= render 'posts/bookmark', { post: post } %>
+    <%= render 'posts/bookmark', { post: } %>
   <% end %>
 <% end %>

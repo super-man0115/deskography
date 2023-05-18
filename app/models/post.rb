@@ -44,12 +44,11 @@ class Post < ApplicationRecord
     comment_bookmark_users.count
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     ["age_group", "business_attribute", "created_at", "id", "updated_at", "user_id"]
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     ["tags"]
   end
-    
 end
