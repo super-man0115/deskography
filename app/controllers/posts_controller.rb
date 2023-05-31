@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     @post.assign_attributes(post_params)
     if @post.save_with_tags(tag_names: params.dig(:post, :tag_names).split(',').uniq)
-      redirect_to post_path(@post), notice: 'アップデート完了！！'
+      redirect_to post_path(@post), notice: 'アップデートしました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice: '投稿を削除したぜ'
+    redirect_to posts_path, notice: '投稿を削除しました'
   end
 
   def upload_image

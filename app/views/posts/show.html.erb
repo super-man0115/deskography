@@ -3,7 +3,7 @@
     <div class="w-full flex justify-between p-3">
       <div class="flex">
         <div class="rounded-full h-8 w-8 bg-gray-500 flex items-center justify-center overflow-hidden">
-          <%= link_to image_tag(@post.user.decorate.avatar.variant(resize: "100x100^", gravity: "center", crop: "100x100+0+0")), user_path(@post.user), class: 'rounded-circle avatar-sm' %>
+          <%= link_to image_tag(@post.user.decorate&.avatar.variant(resize: "100x100^", gravity: "center", crop: "100x100+0+0")), user_path(@post.user), class: 'rounded-circle avatar-sm' %>
         </div>
         <span class='pt-1 ml-2 font-bold text-sm'><%= link_to @post.user.user_name, user_path(@post.user) %></span>
       </div>
