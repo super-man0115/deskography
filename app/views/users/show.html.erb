@@ -15,7 +15,7 @@
           </div>
         </div>
       <% end %>
-      <%= image_tag @user.decorate.avatar&.variant(resize: "100x100^", gravity: "center", crop: "100x100+0+0"), class: "w-32 mx-auto rounded-full -mt-20 border-8 border-white" %>
+      <%= image_tag "default_avatar", class: "w-32 mx-auto rounded-full -mt-20 border-8 border-white" %>
       <div class="text-center mt-2 text-3xl font-medium"><%= @user.user_name %></div>
       <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200 justify-center">
         <svg aria-label="suitcase icon" class="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
