@@ -29,6 +29,7 @@ gem "whenever", require: false
 gem "kaminari"
 gem "meta-tags"
 gem "ransack"
+gem "administrate"
 
 
 group :development, :test do
@@ -64,3 +65,4 @@ end
 gem "dockerfile-rails", ">= 1.2", group: :development
 
 gem "redis", "~> 5.0"
+gem "cssbundling-rails"

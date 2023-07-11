@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :user_items
+      resources :taggings
+      resources :tags
+      resources :post_items
+      resources :authentications
+      resources :users
+      resources :posts
+      resources :items
+      resources :comments
+      resources :comment_bookmarks
+      resources :bookmarks
+
+      root to: "user_items#index"
+    end
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   root to: 'static_pages#index'
   get 'privacy', to: 'static_pages#privacy'
