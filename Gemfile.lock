@@ -125,8 +125,6 @@ GEM
       dry-validation (~> 1.0, >= 1.0.0)
     connection_pool (2.4.0)
     crass (1.0.6)
-    cssbundling-rails (1.2.0)
-      railties (>= 6.0.0)
     date (3.3.3)
     debug (1.7.1)
       irb (>= 1.5.0)
@@ -480,7 +478,6 @@ DEPENDENCIES
   bootsnap
   capybara
   config
-  cssbundling-rails
   debug
   dockerfile-rails (>= 1.2)
   dotenv
