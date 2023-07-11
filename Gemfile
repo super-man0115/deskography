@@ -65,4 +65,4 @@ end
 gem "dockerfile-rails", ">= 1.2", group: :development
 
 gem "redis", "~> 5.0"
-gem "cssbundling-rails"
+
